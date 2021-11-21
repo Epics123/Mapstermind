@@ -93,46 +93,8 @@ void AHand::MoveLeftHandForward(float Value)
 						LeftHandPos.X = MaxHandPosX;
 					if (LeftHandPos.X < MinHandPosX)
 						LeftHandPos.X = MinHandPosX;
-
-					// Reset level rotation if grabbing the joystick
-					if (LCurrentJoystick)
-						LCurrentJoystick->ResetLevelRotation();
-				}
-				else
-				{
-					if (LCurrentJoystick)
-					{
-						LCurrentJoystick->RotateLevel(0.0f, -Value);
-					}
-
-					// Check if left hand is holding the joystick
-					/*if (LCurrentJoystick)
-						LCurrentJoystick->RotateLevel(0.0f, -Value);*/ //Rotate level
-
-
 				}
 			}
-		}
-		// Move hand normally
-		else
-		{
-			if (!LGrabbing)
-			{
-				LeftHandPos.X -= (100.0f * GetWorld()->GetDeltaSeconds()) * Value * HandMovementMultipiler;
-				if (LCurrentJoystick)
-					LCurrentJoystick->ResetLevelRotation();
-			}
-			else
-			{
-				if (LCurrentJoystick)
-					LCurrentJoystick->RotateLevel(0.0f, Value);
-			}
-			// Move hand forward
-			LeftHandPos.X += (100.0f * GetWorld()->GetDeltaSeconds()) * Value * HandMovementMultipiler;
-
-			// Reset level rotation if grabbing the joystick
-			if(LCurrentJoystick)
-				LCurrentJoystick->ResetLevelRotation();
 		}
 		
 	}
@@ -155,14 +117,6 @@ void AHand::MoveLeftHandRight(float Value)
 					LeftHandPos.Y = MaxHandPosY;
 				if(LeftHandPos.Y < MinHandPosY)
 					LeftHandPos.Y = MinHandPosY;
-
-				if (LCurrentJoystick)
-					LCurrentJoystick->ResetLevelRotation();
-			}
-			else
-			{
-				if (LCurrentJoystick)
-					LCurrentJoystick->RotateLevel(Value, 0.0f);
 			}
 			// Check if left hand is grabbing something
 			if (LGrabbing)
@@ -176,38 +130,8 @@ void AHand::MoveLeftHandRight(float Value)
 						LeftHandPos.Y = MaxHandPosY;
 					if (LeftHandPos.Y < MinHandPosY)
 						LeftHandPos.Y = MinHandPosY;
-
-					// Reset level rotation if grabbing the joystick
-					if (LCurrentJoystick)
-						LCurrentJoystick->ResetLevelRotation();
-				}
-				else
-				{
-					// Check if left hand is holding the joystick
-					//if (LCurrentJoystick)
-						//LCurrentJoystick->RotateLevel(Value, 0.0f); // Rotate level
 				}
 			}
-		}
-		else
-		{
-			if (!LGrabbing)
-			{
-				LeftHandPos.Y -= Value * (100.0f * GetWorld()->GetDeltaSeconds()) * Value * HandMovementMultipiler;
-				if (LCurrentJoystick)
-					LCurrentJoystick->ResetLevelRotation();
-			}
-			else
-			{
-				if (LCurrentJoystick)
-					LCurrentJoystick->RotateLevel(-Value, 0.0f);
-			}
-			// Move hand right
-			LeftHandPos.Y += (100.0f * GetWorld()->GetDeltaSeconds()) * Value * HandMovementMultipiler;
-
-			// Reset level rotation if grabbing the joystick
-			if (LCurrentJoystick)
-				LCurrentJoystick->ResetLevelRotation();
 		}
 	}
 
@@ -228,18 +152,9 @@ void AHand::MoveRightHandForward(float Value)
 					RightHandPos.X = MaxHandPosX;
 				if (RightHandPos.X < MinHandPosX)
 					RightHandPos.X = MinHandPosX;
-
-				if (RCurrentJoystick)
-					RCurrentJoystick->ResetLevelRotation();
-			}
-			else
-			{
-				if (RCurrentJoystick)
-					RCurrentJoystick->RotateLevel(0.0f, Value);
 			}
 			if (RGrabbing)
 			{
-
 				if (RHoldingItem)
 				{
 					RightHandPos.X -= (100.0f * GetWorld()->GetDeltaSeconds()) * Value * HandMovementMultipiler;
@@ -247,34 +162,8 @@ void AHand::MoveRightHandForward(float Value)
 						RightHandPos.X = MaxHandPosX;
 					if (RightHandPos.X < MinHandPosX)
 						RightHandPos.X = MinHandPosX;
-
-					if (RCurrentJoystick)
-						RCurrentJoystick->ResetLevelRotation();
-				}
-				else
-				{
-					//if (RCurrentJoystick)
-						//RCurrentJoystick->RotateLevel(0.0f, Value);
 				}
 			}
-		}
-		else
-		{
-			if (!RGrabbing)
-			{
-				RightHandPos.X += (100.0f * GetWorld()->GetDeltaSeconds()) * Value * HandMovementMultipiler;
-
-				if (RCurrentJoystick)
-					RCurrentJoystick->ResetLevelRotation();
-			}
-			else
-			{
-				if (RCurrentJoystick)
-					RCurrentJoystick->RotateLevel(0.0f, -Value);
-			}
-			RightHandPos.X -= (100.0f * GetWorld()->GetDeltaSeconds()) * Value * HandMovementMultipiler;
-			if (RCurrentJoystick)
-				RCurrentJoystick->ResetLevelRotation();
 		}
 	}
 
@@ -306,35 +195,8 @@ void AHand::MoveRightHandRight(float Value)
 					RightHandPos.Y = MaxHandPosY;
 				if (RightHandPos.Y < MinHandPosY)
 					RightHandPos.Y = MinHandPosY;
+			}
 
-				if (RCurrentJoystick)
-					RCurrentJoystick->ResetLevelRotation();
-			}
-			else
-			{
-				if (RCurrentJoystick)
-					RCurrentJoystick->RotateLevel(Value, 0.0f);
-				//if (RCurrentJoystick)
-					//RCurrentJoystick->RotateLevel(Value, 0.0f);
-			}
-		}
-		else
-		{
-			if (!RGrabbing)
-			{
-				RightHandPos.Y -= (100.0f * GetWorld()->GetDeltaSeconds()) * Value * HandMovementMultipiler;
-
-				if (RCurrentJoystick)
-					RCurrentJoystick->ResetLevelRotation();
-			}
-			else
-			{
-				if (RCurrentJoystick)
-					RCurrentJoystick->RotateLevel(-Value, 0.0f);
-			}
-			RightHandPos.Y += (100.0f * GetWorld()->GetDeltaSeconds()) * Value * HandMovementMultipiler;
-			if (RCurrentJoystick)
-				RCurrentJoystick->ResetLevelRotation();
 		}
 	}
 

@@ -21,11 +21,11 @@ public:
 	// Sets default values for this character's properties
 	AHand();
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	FVector LeftHandPos;
+	UPROPERTY(BlueprintReadWrite)
+	FVector LeftHandPos = FVector(-20.0f, -190.0f, 0.0f);
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	FVector RightHandPos;
+	UPROPERTY(BlueprintReadWrite)
+	FVector RightHandPos = FVector(-20.0f, 170.0f, 0.0f);
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Movement")
 	float HandMovementMultipiler = 8.0f;
