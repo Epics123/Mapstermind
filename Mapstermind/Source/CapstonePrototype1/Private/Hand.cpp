@@ -65,6 +65,11 @@ void AHand::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 	PlayerInputComponent->BindAction("LHandPressButton", IE_Released, this, &AHand::LHandRelease);
 }
 
+/*
+* MoveLeftHandForward
+* Moves the left hand forward/backwards based on input value
+*	Param Value: Normalized (0-1) input value from the player
+*/
 void AHand::MoveLeftHandForward(float Value)
 {
 	// Check if trigger has been pressed
@@ -103,6 +108,11 @@ void AHand::MoveLeftHandForward(float Value)
 	UpdateHandPositions();
 }
 
+/*
+* MoveLeftHandRight
+* Moves the left hand right/left based on input value
+*	Param Value: Normalized (0-1) input value from the player
+*/
 void AHand::MoveLeftHandRight(float Value)
 {
 	// Check if trigger has been pressed
@@ -139,6 +149,11 @@ void AHand::MoveLeftHandRight(float Value)
 	UpdateHandPositions();
 }
 
+/*
+* MoveRightHandForward
+* Moves the right hand forward/backwards based on input value
+*	Param Value: Normalized (0-1) input value from the player
+*/
 void AHand::MoveRightHandForward(float Value)
 {
 	if (Value != 0 && ! IsStunned)
@@ -170,6 +185,11 @@ void AHand::MoveRightHandForward(float Value)
 	UpdateHandPositions();
 }
 
+/*
+* MoveRightHandRight
+* Moves the right hand right/left based on input value
+*	Param Value: Normalized (0-1) input value from the player
+*/
 void AHand::MoveRightHandRight(float Value)
 {
 	if (Value != 0 && !IsStunned)
@@ -203,91 +223,143 @@ void AHand::MoveRightHandRight(float Value)
 	UpdateHandPositions();
 }
 
+/*
+* LHandGrab
+* Grab an item when left trigger is held
+*	Param Value: Normalized (0-1) input value from the player
+*/
 void AHand::LHandGrab(float Value)
 {
+	// Check if trigger is held
 	if (Value != 0 && !IsStunned)
 	{
+		// Grab item
 		LGrabbing = true;
-
 		GrabItem(true);
 
+		// Check if we are grabbing a lever
 		if (LCurrentLever)
-			LCurrentLever->InteractHand(this, true);
+			LCurrentLever->InteractHand(this, true); // If we are, interact w/ the lever
 	}
 	else
-	{
+	{	
+		// Release grabbed item
 		LGrabbing = false;
-
 		if(LHoldingItem)
 			ReleaseItem(true);
 	}
 }
 
+/*
+* RHandGrab
+* Grab an item when right trigger is held
+*	Param Value: Normalized (0-1) input value from the player
+*/
 void AHand::RHandGrab(float Value)
 {
+	// Check if trigger is held
 	if (Value != 0 && !IsStunned)
 	{
+		// Grab item
 		RGrabbing = true;
-
 		GrabItem(false);
 
+		// Check if we are grabbing a lever
 		if(RCurrentLever)
-			RCurrentLever->InteractHand(this, false);
+			RCurrentLever->InteractHand(this, false); // If we are, interact w/ the lever
 	}
 	else
 	{
+		// Release grabbed item
 		RGrabbing = false;
-
 		if(RHoldingItem)
 			ReleaseItem(false);
 	}
 }
 
+/*
+* LHandPress
+* Initiate button press when player presses the left bumper
+*/
 void AHand::LHandPress()
 {
 	LPressed = true;
 
 	PlayPressAnimation(true);
 
+	// Check if we are over a button
 	if(LCurrentButton)
-		LCurrentButton->InteractHand(this, true);
+		LCurrentButton->InteractHand(this, true); // If we are, interact w/ the button
 }
 
+/*
+* LHandRelease
+* Stop button press when player releases the left bumper
+*/
 void AHand::LHandRelease()
 {
 	LPressed = false;
 }
 
+/*
+* RHandPress
+* Initiate button press when player presses the right bumper
+*/
 void AHand::RHandPress()
 {
 	RPressed = true;
 
 	PlayPressAnimation(false);
 
+	// Check if we are over a button
 	if (RCurrentButton)
-		RCurrentButton->InteractHand(this, false);
+		RCurrentButton->InteractHand(this, false); // If we are, interact w/ the button
 }
 
+/*
+* RHandRelease
+* Stop button press when player releases the right bumper
+*/
 void AHand::RHandRelease()
 {
 	RPressed = false;
 }
 
+/*
+* GetLeftHandPos
+* Get the current position of the left hand relative to the hand BP
+*	Return: relative left hand position
+*/
 FVector AHand::GetLeftHandPos()
 {
 	return LeftHandPos;
 }
 
+/*
+* SetLeftHandPos
+* Set the current position of the left hand relative to the hand BP
+*	Param pos: relative left hand position
+*/
 void AHand::SetLeftHandPos(FVector pos)
 {
 	LeftHandPos = pos;
 }
 
+/*
+* GetRightHandPos
+* Get the current position of the right hand relative to the hand BP
+*	Return: relative right hand position
+*/
 FVector AHand::GetRightHandPos()
 {
 	return RightHandPos;
 }
 
+/*
+* SetRightHandPos
+* Set the current position of the right hand relative to the hand BP
+*	Param pos: relative right hand position
+*/
 void AHand::SetRightHandPos(FVector pos)
 {
 	RightHandPos = pos;
