@@ -32,4 +32,9 @@ public:
 	void ActivateLever(ACapstonePrototype1Character* Character);
 	UFUNCTION(BlueprintImplementableEvent)
 	void HandActivateLever(ACharacter* Hand, bool isLeft);
+	
+	UFUNCTION(BlueprintImplementableEvent)
+	void Activate();
+	UFUNCTION(BlueprintImplementableEvent)
+	void Reset();
 };
