@@ -12,6 +12,7 @@ enum class EItemType : uint8
 	MASK		UMETA(DisplayName="Mask"),
 	BASEBALL	UMETA(DisplayName="Baseball"),
 	HOURGLASS	UMETA(DisplayName="Hourglass"),
+	TUTORIAL	UMETA(DisplayName="Tutorial"),
 	CLAMHAT		UMETA(DisplayName="Clam Hat"),
 	CLAMEYES	UMETA(DisplayName="Clam Eyes")
 };
