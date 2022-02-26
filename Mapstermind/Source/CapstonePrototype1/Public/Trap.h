@@ -23,6 +23,9 @@ public:
 	bool IsJailCell;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	bool IsInWorld;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FVector OriginalLocation;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
@@ -39,4 +42,6 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
+	void ActivatePlacedTrap();
 };
