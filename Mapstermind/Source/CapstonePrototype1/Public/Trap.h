@@ -44,4 +44,6 @@ public:
 
 	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
 	void ActivatePlacedTrap();
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
+	void RotateTrap();
 };
