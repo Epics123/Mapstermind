@@ -365,3 +365,23 @@ void AHand::SetRightHandPos(FVector pos)
 	RightHandPos = pos;
 }
 
+void AHand::SetMaxHandPosX(float max)
+{
+	MaxHandPosX = max;
+}
+
+void AHand::SetMinHandPosX(float min)
+{
+	MinHandPosX = min;
+}
+
+void AHand::SetMaxHandPosY(float max)
+{
+	MaxHandPosY = max;
+}
+
+void AHand::SetMinHandPosY(float min)
+{
+	MinHandPosY = min;
+}
+
