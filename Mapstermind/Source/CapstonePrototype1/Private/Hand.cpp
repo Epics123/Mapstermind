@@ -236,10 +236,6 @@ void AHand::LHandGrab(float Value)
 		// Grab item
 		LGrabbing = true;
 		GrabItem(true);
-
-		// Check if we are grabbing a lever
-		if (LCurrentLever)
-			LCurrentLever->InteractHand(this, true); // If we are, interact w/ the lever
 	}
 	else
 	{	
@@ -263,10 +259,6 @@ void AHand::RHandGrab(float Value)
 		// Grab item
 		RGrabbing = true;
 		GrabItem(false);
-
-		// Check if we are grabbing a lever
-		if(RCurrentLever)
-			RCurrentLever->InteractHand(this, false); // If we are, interact w/ the lever
 	}
 	else
 	{
@@ -285,11 +277,17 @@ void AHand::LHandPress()
 {
 	LPressed = true;
 
-	PlayPressAnimation(true);
-
 	// Check if we are over a button
-	if(LCurrentButton)
+	if (LCurrentButton)
+	{
+		PlayPressAnimation(true);
 		LCurrentButton->InteractHand(this, true); // If we are, interact w/ the button
+	}
+	else if (LCurrentLever)
+	{
+		PlayPullAnimation(true);
+		LCurrentLever->InteractHand(this, true);
+	}
 }
 
 /*
@@ -309,11 +307,18 @@ void AHand::RHandPress()
 {
 	RPressed = true;
 
-	PlayPressAnimation(false);
-
 	// Check if we are over a button
 	if (RCurrentButton)
+	{
+		PlayPressAnimation(false);
 		RCurrentButton->InteractHand(this, false); // If we are, interact w/ the button
+	}
+	else if (RCurrentLever)
+	{
+		PlayPullAnimation(false);
+		RCurrentLever->InteractHand(this, true);
+	}
+		
 }
 
 /*
@@ -363,5 +368,25 @@ FVector AHand::GetRightHandPos()
 void AHand::SetRightHandPos(FVector pos)
 {
 	RightHandPos = pos;
+}
+
+void AHand::SetMaxHandPosX(float max)
+{
+	MaxHandPosX = max;
+}
+
+void AHand::SetMinHandPosX(float min)
+{
+	MinHandPosX = min;
+}
+
+void AHand::SetMaxHandPosY(float max)
+{
+	MaxHandPosY = max;
+}
+
+void AHand::SetMinHandPosY(float min)
+{
+	MinHandPosY = min;
 }
 

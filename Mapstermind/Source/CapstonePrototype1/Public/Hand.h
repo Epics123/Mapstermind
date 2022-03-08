@@ -32,21 +32,21 @@ public:
 	float HandMovementMultipiler = 8.0f;
 
 	// Hand State Booleans
-	UPROPERTY(BlueprintReadWrite)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	bool LGrabbing;
-	UPROPERTY(BlueprintReadWrite)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	bool RGrabbing;
-	UPROPERTY(BlueprintReadOnly)
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	bool RPressed;
-	UPROPERTY(BlueprintReadWrite)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	bool LPressed;
-	UPROPERTY(BlueprintReadWrite)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	bool RPullingLever;
-	UPROPERTY(BlueprintReadWrite)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	bool LPullingLever;
-	UPROPERTY(BlueprintReadWrite)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	bool LHoldingItem;
-	UPROPERTY(BlueprintReadWrite)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	bool RHoldingItem;
 	UPROPERTY(BlueprintReadWrite)
 	bool IsInverted;
@@ -56,13 +56,13 @@ public:
 	// Hand Constraints
 	UPROPERTY(BlueprintReadWrite)
 	float InteractDistance;
-	UPROPERTY(BlueprintReadWrite)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	float MinHandPosX = -300.0f;
-	UPROPERTY(BlueprintReadWrite)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	float MaxHandPosX = 6000.0f;
-	UPROPERTY(BlueprintReadWrite)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	float MinHandPosY = -4600.0f;
-	UPROPERTY(BlueprintReadWrite)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	float MaxHandPosY = 4600.0f;
 
 	// Interactable Refs
@@ -128,9 +128,20 @@ public:
 	FVector GetRightHandPos();
 	UFUNCTION(BlueprintCallable)
 	void SetRightHandPos(FVector pos);
+	UFUNCTION(BlueprintCallable)
+	void SetMaxHandPosX(float max);
+	UFUNCTION(BlueprintCallable)
+	void SetMinHandPosX(float min);
+	UFUNCTION(BlueprintCallable)
+	void SetMaxHandPosY(float max);
+	UFUNCTION(BlueprintCallable)
+	void SetMinHandPosY(float min);
 
 	// Animation Control
 	UFUNCTION(BlueprintImplementableEvent)
 	void PlayPressAnimation(bool isLeft);
+
+	UFUNCTION(BlueprintImplementableEvent)
+	void PlayPullAnimation(bool isLeft);
 
 };
