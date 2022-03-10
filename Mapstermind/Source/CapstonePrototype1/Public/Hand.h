@@ -141,4 +141,7 @@ public:
 	UFUNCTION(BlueprintImplementableEvent)
 	void PlayPressAnimation(bool isLeft);
 
+	UFUNCTION(BlueprintImplementableEvent)
+	void PlayPullAnimation(bool isLeft);
+
 };
