@@ -36,6 +36,7 @@ ACapstonePrototype1Character::ACapstonePrototype1Character()
 	InteractDistance = 100.0f;
 	IsEnemy = false;
 	PullingLever = false;
+	CanMove = true;
 
 	// Note: The skeletal mesh and anim blueprint references on the Mesh component (inherited from Character) 
 	// are set in the derived blueprint asset named MyCharacter (to avoid direct content references in C++)
@@ -106,7 +107,7 @@ void ACapstonePrototype1Character::Interact()
 
 void ACapstonePrototype1Character::MoveForward(float Value)
 {
-	if ((Controller != nullptr) && (Value != 0.0f))
+	if ((Controller != nullptr) && (Value != 0.0f) && CanMove)
 	{
 		// find out which way is forward
 		const FRotator Rotation = Controller->GetControlRotation();
@@ -120,7 +121,7 @@ void ACapstonePrototype1Character::MoveForward(float Value)
 
 void ACapstonePrototype1Character::MoveRight(float Value)
 {
-	if ( (Controller != nullptr) && (Value != 0.0f) )
+	if ( (Controller != nullptr) && (Value != 0.0f) && CanMove)
 	{
 		// find out which way is right
 		const FRotator Rotation = Controller->GetControlRotation();
