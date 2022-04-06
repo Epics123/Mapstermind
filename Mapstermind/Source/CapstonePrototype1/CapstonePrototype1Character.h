@@ -30,6 +30,8 @@ public:
 	UPROPERTY(BlueprintReadWrite)
 	bool PullingLever;
 
+	UPROPERTY(BlueprintReadWrite)
+	bool invertMovement;
 protected:
 
 	/** Called for forwards/backward input */
