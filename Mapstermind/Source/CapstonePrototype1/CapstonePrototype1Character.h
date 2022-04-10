@@ -31,7 +31,11 @@ public:
 	bool PullingLever;
 
 	UPROPERTY(BlueprintReadWrite)
+	bool invertMovement;
+
+	UPROPERTY(BlueprintReadWrite)
 	bool CanMove;
+	
 
 protected:
 
