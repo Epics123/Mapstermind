@@ -23,13 +23,18 @@ public:
 
 	ALever();
 
+	// Player interaction
 	virtual void Interact(ACapstonePrototype1Character* Character) override;
-
 	virtual void InteractHand(ACharacter* Hand, bool isLeft) override;
 
+	// Lever Activation
 	UFUNCTION(BlueprintImplementableEvent)
 	void ActivateLever(ACapstonePrototype1Character* Character);
-
 	UFUNCTION(BlueprintImplementableEvent)
 	void HandActivateLever(ACharacter* Hand, bool isLeft);
+	
+	UFUNCTION(BlueprintImplementableEvent)
+	void ActivateLeverSequence();
+	UFUNCTION(BlueprintImplementableEvent)
+	void ResetLeverSequence();
 };

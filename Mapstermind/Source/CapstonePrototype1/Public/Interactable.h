@@ -22,9 +22,9 @@ protected:
 	virtual void BeginPlay() override;
 
 public:
-
+	
+	// Player Interaction
 	virtual void Interact(ACapstonePrototype1Character* Character) PURE_VIRTUAL(AInteractable::Interact(), );
-
 	virtual void InteractHand(ACharacter* Hand, bool isLeft) PURE_VIRTUAL(AInteractable::InteractHand(), );
 	
 	// Called every frame
