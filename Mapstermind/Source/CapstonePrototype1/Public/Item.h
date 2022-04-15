@@ -15,7 +15,8 @@ enum class EItemType : uint8
 	TUTORIAL	UMETA(DisplayName="Tutorial"),
 	CLAMHAT		UMETA(DisplayName="Clam Hat"),
 	CLAMEYES	UMETA(DisplayName="Clam Eyes"),
-	PEARL		UMETA(DisplayName="Pearl")
+	PEARL		UMETA(DisplayName="Pearl"),
+	CROWN		UMETA(DisplayName="Crown")
 };
 
 UCLASS()
