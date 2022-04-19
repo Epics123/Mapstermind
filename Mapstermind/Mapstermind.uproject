@@ -64,6 +64,10 @@
 				"Android",
 				"HoloLens"
 			]
+		},
+		{
+			"Name": "Takes",
+			"Enabled": true
 		}
 	]
 }
